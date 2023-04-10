@@ -1,0 +1,24 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+{% load custom_tags %}
+
+
+{% block content %}
+<h1><font color="red">Удаление публикации</font></h1>
+<hr>
+    <h4>
+    <form><a href="{% url 'news_list' %}"><input type="button" value="Вернуться на главную" /></a></form>
+    </h4>
+<hr>
+<form action="" method="post">
+    {% csrf_token %}
+    <p><h7><font color="blue">Загаловок:</font></h7><br>"{{ object.title }}"<br>
+    <h7><font color="blue">Текст: </font></h7><br> "{{ object.text }}" ?</p>
+    <input type="submit" value="Удалить" />
+</form>
+
+<hr>
+    <h7>PythonDjangoPost</h7>
+
+{% endblock content %}

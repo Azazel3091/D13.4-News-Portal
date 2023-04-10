@@ -1,0 +1,45 @@
+<!--  наследуемся от шаблона default.html -->
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+{% load custom_tags %}
+
+{% block title %}
+Post
+{% endblock title %}
+
+{% block content %}
+<h1><font color="red">Мировые новости</font></h1>
+<h1><font color="blue">Публикация</font></h1>
+<h1><font color="orange">(AR)Статья/(NW)Новости</font></h1>
+<h3><i>Сегодня: {% current_time '%d %b %Y %A' %}</i></h3>
+<hr>
+    <h4>
+    <form><a href="{% url 'news_list' %}"><input type="button" value="Вернуться на главную" /></a></form>
+    </h4>
+<hr>
+    <table>
+        <tr>
+            <td><b>Загаловок</b></td>
+            <td><b>Текст</b></td>
+            <td><b>Дата публикации</b></td>
+            <td><b>Раздел</b></td>
+            <td><b>Автор</b></td>
+            <td><b>Рейтинг</b></td>
+        <tr>
+
+        <tr>
+            <td>{{ selected_news.title|censor }}</td>
+            <td>
+                <div align="center">{{ selected_news.text|censor }}</div>
+            </td>
+            <td>{{ selected_news.dateCreation|date:'d M Y ' }}</td>
+            <td>{{ selected_news.categoryType }}</td>
+            <td>{{ selected_news.author.authorUser }}</td>
+            <td>{{ selected_news.rating }}</td>
+        </tr>
+    </table>
+<hr>
+    <h7>PythonDjangoPost</h7>
+
+{% endblock content %}

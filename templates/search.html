@@ -1,0 +1,78 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+{% load custom_tags %}
+
+{% block title %}
+Post
+{% endblock title %}
+
+{% block content %}
+<h1><font color="red">Все новости</font></h1>
+<h3><font color="orange">Количество статей/новостей:{{ post_search|length }}</font></h3>
+   <h3>Сегодня: {% current_time '%d %b %Y %A' %}</h3>
+<hr>
+    <h4>
+    <form><a href="{% url 'news_list' %}"><input type="button" value="Вернуться на главную" /></a></form>
+    </h4>
+<hr>
+    <h3><font color="red">Поиск публикаций по параметрам:</font></h3>
+   <form action="" method="get">
+       {{ filterset.form.as_p }}
+       <input type="submit" value="Поиск" />
+   </form>
+
+    <hr>
+    <h5><font color="blue">Все публикации:</font></h5>
+    {% if post_search %}
+       <table>
+           <tr>
+               <td>Название статьи или новости</td>
+               <td>Раздел</td>
+               <td>Автор</td>
+               <td>Текст статьи или новости</td>
+               <td>Дата публикации</td>
+                <td>Рейтинг</td>
+           <tr>
+           {% for Post in post_search %}
+           <tr>
+               <td>
+                   <a href="{% url 'news_detail' pk=Post.id %}">{{ Post.title|censor }}</a>
+               </td>
+               <td>{{ Post.categoryType }}</td>
+               <td>{{ Post.author.authorUser }}</td>
+               <td>{{ Post.text|truncatechars:20 }}</td>
+               <td>{{ Post.dateCreation|date:'d M Y ' }}</td>
+                <td>{{ Post.rating }}</td>
+          <tr>
+           {% endfor %}
+       </table>
+    {% else %}
+       <h2>Публикаций нет!</h2>
+    {% endif %}
+
+
+
+    {% if page_obj.has_previous %}
+       {# Для каждой ссылки пагинации указываем обработку через новый тег #}
+       <a href="?{% url_replace page=1 %}">1</a>
+       {% if page_obj.previous_page_number != 1 %}
+           ...
+           <a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
+       {% endif %}
+   {% endif %}
+
+   {{ page_obj.number }}
+
+   {% if page_obj.has_next %}
+       <a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
+       {% if paginator.num_pages != page_obj.next_page_number %}
+           ...
+           <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
+       {% endif %}
+   {% endif %}
+
+<hr>
+    <h7>PythonDjangoPost</h7>
+
+{% endblock content %}

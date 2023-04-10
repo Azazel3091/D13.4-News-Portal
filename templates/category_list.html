@@ -1,0 +1,119 @@
+<!--  наследуемся от шаблона default.html -->
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+{% load custom_tags %}
+
+
+{% block title %}
+Post
+{% endblock title %}
+
+
+{% block content %}
+    <div class="btn-group">
+    <form><a href="http://127.0.0.1:8000/accounts/signup/"><input type="button" value="Регистрация" /></a></form>
+        <form><a href="http://127.0.0.1:8000/accounts/logout/"><input type="button" value="Выйти" /></a></form>
+    </div>
+  <h1><font color="red">Все новости</font></h1>
+   <h3><font color="orange">Количество статей/новостей:{{ news_content|length }}</font></h3>
+   <h3>Сегодня: {% current_time '%d %b %Y %A' %}</h3>
+    <h3><font color="green">Публикации</font></h3>
+
+
+
+    <hr>
+    {% if category_news_list %}
+    <h4>
+        {% if perms.newsportal.add_post %}
+    <form><a href="{% url 'news_create' %}"><input type="button" value="Создать публикацию" /></a></form>
+        {% endif %}
+    </h4>
+    <h4>
+    <form><a href="{% url 'news_list' %}"><input type="button" value="Вернуться на главную" /></a></form>
+    </h4>
+    <h5>
+    <form><a href="{% url 'post_search' %}"><input type="button" value="Поиск" /></a></form>
+    </h5>
+    <h5>
+      {% if is_not_subscriber %}
+    <p><a href="{% url 'subscribe' category.id %}" class="btn btn-secondary btn-sm">Подписаться</a></p>
+      {% endif %}
+    </h5>
+    <hr>
+    <h5><font color="blue">Все публикации:</font></h5>
+       <table>
+           <tr>
+               <td>Название статьи или новости</td>
+               <td>Раздел</td>
+               <td>Автор</td>
+               <td>Текст статьи или новости</td>
+               <td>Дата публикации</td>
+                <td>Рейтинг</td>
+
+               {# Условие получается составным. #}
+                {% if perms.newsportal.change_post or perms.newsportal.delete_post %}
+                <td>Редактирование</td>
+                {% endif %}
+
+           <tr>
+           {% for Post in category_news_list %}
+           <tr>
+               <td>
+                   <a href="{% url 'news_detail' pk=Post.id %}">{{ Post.title|censor }}</a>
+               </td>
+               <td>
+
+                     {% for category in Post.postCategory.all %}
+                     <a href="{% url 'category_list' category.id %}">{{ category }}</a>
+                     {% endfor %}
+
+               </td>
+               <td>{{ Post.author.authorUser }}</td>
+               <td>{{ Post.text|truncatechars:20 }}</td>
+               <td>{{ Post.dateCreation|date:'d M Y ' }}</td>
+                <td>{{ Post.rating }}</td>
+                <td>
+
+                    {# А здесь доступ для каждой ссылки теперь будем проверять отдельно #}
+                    {% if perms.newsportal.change_post %}
+                    <a href="{% url 'news_update' pk=Post.id %}">Изменить</a>
+                    {% endif %}
+                    {% if perms.newsportal.delete_post %}
+                    <a href="{% url 'post_delete' pk=Post.id %}">Удалить</a>
+                    {% endif %}
+                </td>
+
+          <tr>
+           {% endfor %}
+       </table>
+    {% else %}
+       <h2>Публикаций нет!</h2>
+    {% endif %}
+
+
+    {% if page_obj.has_previous %}
+       <a href="?{% url_replace page=1 %}">1</a>
+       {% if page_obj.previous_page_number != 1 %}
+           ...
+           <a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
+       {% endif %}
+   {% endif %}
+
+   {# Информация о текущей странице #}
+   {{ page_obj.number }}
+
+   {# Информация о следующих страницах #}
+   {% if page_obj.has_next %}
+       <a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
+       {% if paginator.num_pages != page_obj.next_page_number %}
+           ...
+           <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
+       {% endif %}
+   {% endif %}
+
+    <hr>
+    <h7>PythonDjangoPost</h7>
+
+
+{% endblock content %}

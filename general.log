@@ -1,0 +1,49 @@
+2023-04-10 14:55:15,155 INFO autoreload Watching for file changes with StatReloader
+2023-04-10 15:00:30,785 INFO autoreload C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\News\newsportal\models.py changed, reloading.
+2023-04-10 15:00:31,928 INFO autoreload Watching for file changes with StatReloader
+2023-04-10 15:02:04,189 INFO autoreload C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\News\newsportal\models.py changed, reloading.
+2023-04-10 15:02:05,245 INFO autoreload Watching for file changes with StatReloader
+2023-04-10 15:02:22,955 INFO autoreload Watching for file changes with StatReloader
+2023-04-10 15:04:05,512 INFO autoreload C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\News\newsportal\models.py changed, reloading.
+2023-04-10 15:04:06,629 INFO autoreload Watching for file changes with StatReloader
+2023-04-10 15:05:17,905 INFO autoreload C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\News\News\urls.py changed, reloading.
+2023-04-10 15:05:19,023 INFO autoreload Watching for file changes with StatReloader
+2023-04-10 15:06:32,608 INFO autoreload C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\News\newsportal\urls.py changed, reloading.
+2023-04-10 15:06:33,879 INFO autoreload Watching for file changes with StatReloader
+2023-04-10 15:07:09,616 INFO autoreload C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\News\News\settings.py changed, reloading.
+2023-04-10 15:07:10,651 INFO autoreload Watching for file changes with StatReloader
+2023-04-10 15:07:32,811 ERROR exception Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\venv\lib\site-packages\django\utils\deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\venv\lib\site-packages\django\http\request.py", line 148, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2023-04-10 15:07:38,543 ERROR exception Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\venv\lib\site-packages\django\utils\deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\venv\lib\site-packages\django\http\request.py", line 148, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2023-04-10 15:07:40,294 ERROR exception Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\venv\lib\site-packages\django\utils\deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\venv\lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\venv\lib\site-packages\django\http\request.py", line 148, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2023-04-10 15:08:03,671 INFO autoreload C:\Users\Андрей\Desktop\Учебник Python\NewsPortal\News\News\settings.py changed, reloading.
+2023-04-10 15:08:05,114 INFO autoreload Watching for file changes with StatReloader

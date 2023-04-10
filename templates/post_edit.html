@@ -1,0 +1,20 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+<h1><font color="green">Работа с публикацией</font></h1>
+<hr>
+    <h4>
+    <form><a href="{% url 'news_list' %}"><input type="button" value="Вернуться на главную" /></a></form>
+    </h4>
+<hr>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" />
+</form>
+
+<hr>
+    <h7>PythonDjangoPost</h7>
+
+{% endblock content %}
