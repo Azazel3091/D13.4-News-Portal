@@ -258,7 +258,7 @@ LOGGING = {
         },
         'news_info': {
             'level': 'INFO',
-            'filters': ['require_debug_true'],
+            'filters': ['require_debug_false'],
             'class': 'logging.FileHandler',
             'filename': 'general.log',
             'formatter': 'info'
